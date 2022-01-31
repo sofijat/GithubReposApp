@@ -16,7 +16,7 @@ class Util {
             }
         }
 
-        fun toSimpleString(date: Date?) : String {
+        fun convertDateToSimpleString(date: Date?) : String {
             val format = SimpleDateFormat("dd/MM/yyy HH:mm:ss")
             if (date != null) {
                 return format.format(date)
