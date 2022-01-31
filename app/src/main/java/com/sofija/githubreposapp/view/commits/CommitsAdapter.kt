@@ -6,6 +6,7 @@ import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.sofija.githubreposapp.databinding.CommitItemCardBinding
 import com.sofija.githubreposapp.model.RepoCommit
+import com.sofija.githubreposapp.util.Util
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -37,20 +38,12 @@ class CommitsAdapter(): RecyclerView.Adapter<CommitsAdapter.CommitsViewHolder>()
     override fun onBindViewHolder(holder: CommitsViewHolder, position: Int) {
         val item = itemsList[position]
         holder.binding.message.text = item.commit?.message
-        holder.binding.authorAndDate.text = item.commit?.author?.name + "@" + toSimpleString(item.commit?.author?.date)
+        holder.binding.authorAndDate.text = item.commit?.author?.name + "@" + Util.toSimpleString(item.commit?.author?.date)
         holder.binding.order.text = "#" + (position + 1).toString()
     }
 
     override fun getItemCount(): Int {
         return itemsList.size
-    }
-
-    private fun toSimpleString(date: Date?) : String {
-        val format = SimpleDateFormat("dd/MM/yyy HH:mm:ss")
-        if (date != null) {
-            return format.format(date)
-        }
-        return ""
     }
 
 }
